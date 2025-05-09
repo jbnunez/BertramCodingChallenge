@@ -20,6 +20,7 @@ Tip and Tax are divided proportionally among each user who had items in the orde
 
 
 Areas for future improvements:
+-Code Cleanup: I used the npm built in react starter kit, so there may be some extraneous boilerplate code in use
 -Error handling: I didn't have time to add much error handling
 -Help text: if a user has invalid inputs, show them helpful messages about what data is missing or invalid
 -Alignment: I think there's still some odd alignment behavior in the UI, and the spacing and alignment in general could look better if I had more time to work on this.
