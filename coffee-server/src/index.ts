@@ -8,6 +8,13 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', ['http://localhost:3000']);
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    res.append('Access-Control-Allow-Headers', 'Content-Type')
+    next();
+});
+
 app.get("/api/users", async (req, res) => {
     var users = getUsers()
     res.json({ message: "Success", data: users })
@@ -31,7 +38,6 @@ app.post("/api/addUser", async (req, res) => {
 })
 
 app.post("/api/getSuggestedPayer", async (req, res) => {
-    console.log('body', req.body)
     const groupOrder: GroupOrder = req.body
     var users = getUsers()
     let lowestBalance = Number.MAX_VALUE
