@@ -4,9 +4,14 @@ const BASE_API_URL = "http://localhost:5000/api"
 
 export async function getUsers() {
     try {
-        const response = await fetch(`${BASE_API_URL}/users`)
+        const response = await fetch(`${BASE_API_URL}/users`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": '*',
+            },
+        })
         const users: User[] = (await response.json()).data
-        console.log('users', users)
         return users
     } catch (e) {
         console.log(e)
@@ -18,7 +23,8 @@ export async function addUser(user: User) {
         const response = await fetch(`${BASE_API_URL}/addUser`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": '*',
             },
             body: JSON.stringify(user)
         })
@@ -33,7 +39,8 @@ export async function getSuggestedPayer(order: GroupOrder) {
         const response = await fetch(`${BASE_API_URL}/getSuggestedPayer`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": '*',
             },
             body: JSON.stringify(order)
         })
@@ -49,7 +56,8 @@ export async function addPayment(payment: GroupOrderPayment) {
         const response = await fetch(`${BASE_API_URL}/payment`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": '*',
             },
             body: JSON.stringify(payment)
         })

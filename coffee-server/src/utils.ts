@@ -1,4 +1,7 @@
 import { GroupOrder, User, UserOrder } from "./types";
+import fs, { NoParamCallback } from 'fs'
+
+const usersFile = 'src/data/users.json'
 
 export function getFutureUserBalances(users: User[], groupOrder: GroupOrder) {
     const updatedUsers = [...users]
@@ -25,4 +28,12 @@ export function splitTaxTip(groupOrder: GroupOrder, total: number) {
         }
     }) }
     return order
+}
+
+export function getUsers() {
+    return JSON.parse(fs.readFileSync(usersFile, 'utf-8'))
+}
+
+export function writeUsers(users: User[], errFn: NoParamCallback) {
+    fs.writeFile(usersFile, JSON.stringify(users), errFn)
 }

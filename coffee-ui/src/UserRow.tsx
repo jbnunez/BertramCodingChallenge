@@ -18,7 +18,7 @@ export function UserRow(props: {
                     <InputLabel>User</InputLabel>
                     <Select
                         label="User" 
-                        value={props.rowData.user?.email}
+                        value={props.rowData.user?.email || ''}
                         sx={{
                             width: '300px'
                         }}
@@ -30,7 +30,7 @@ export function UserRow(props: {
                         }}
                         error={userError}
                     >
-                        {users.map((user: User) => (<MenuItem value={user.email}>{user.firstName} {user.lastName}</MenuItem>))}
+                        {users.map((user: User) => (<MenuItem key={user.email} value={user.email}>{user.firstName} {user.lastName}</MenuItem>))}
                     </Select>
                 </FormControl>
             </Box>

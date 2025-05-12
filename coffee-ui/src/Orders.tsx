@@ -93,12 +93,15 @@ export function Orders() {
             {rowsExpanded && (<div>
                 <Box display='flex' flexDirection='column'>
                     {rows.map((row, index) => (
-                        <UserRow
-                            rowData={row}
-                            setRow={(rowData: UserRowData) => handleRowChange(index, rowData)} 
-                            userError={false}
-                            priceError={false}
-                        />
+                        <div key={`${row.user?.email}-${index}`}>
+                            <UserRow
+                                rowData={row}
+                                setRow={(rowData: UserRowData) => handleRowChange(index, rowData)} 
+                                userError={false}
+                                priceError={false}
+                            />
+                        </div>
+                        
                     ))}
                 </Box>
                 <Button onClick={() => {setRows([...rows, {user: null, price: 0}])}}>Add Person to Order</Button>

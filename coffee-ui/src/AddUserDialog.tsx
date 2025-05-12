@@ -1,7 +1,6 @@
 import { Box, Button, Dialog, IconButton, TextField, Typography } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import { useContext, useState } from "react";
-import { User } from "./types";
 import { UsersContext } from "./App";
 import { addUser } from "./api";
 
